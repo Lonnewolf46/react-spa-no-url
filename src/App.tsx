@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import About from './pages/About'
 import Glossary from './pages/Glossary'
 import Home from './pages/Home'
+import { decryptData } from './data/info_fetching'
 import type { Page } from './types'
 
 function App() {
@@ -15,17 +16,33 @@ function App() {
   return (
     <div className="app-shell">
       <header className="site-header">
-        <button className="brand" onClick={() => navigate('inicio')} aria-label="Ir al inicio">
+        <button
+          className="brand"
+          onClick={() => navigate('inicio')}
+          aria-label="Ir al inicio"
+        >
           <span className="brand-mark">GS</span>
-          <span>Glosario<span className="brand-dot">.</span></span>
+          <span>
+            Glosario<span className="brand-dot">.</span>
+          </span>
         </button>
+
         <nav aria-label="Navegacion principal">
           {(['inicio', 'glosario', 'acerca'] as Page[]).map((item) => (
-            <button className={page === item ? 'nav-link active' : 'nav-link'} key={item} onClick={() => navigate(item)}>
-              {item === 'inicio' ? 'Inicio' : item === 'glosario' ? 'Explorar terminos' : 'Acerca del proyecto'}
+            <button
+              className={page === item ? 'nav-link active' : 'nav-link'}
+              key={item}
+              onClick={() => navigate(item)}
+            >
+              {item === 'inicio'
+                ? 'Inicio'
+                : item === 'glosario'
+                  ? 'Explorar terminos'
+                  : 'Acerca del proyecto'}
             </button>
           ))}
         </nav>
+
         <span className="header-note">Edicion 2025</span>
       </header>
 

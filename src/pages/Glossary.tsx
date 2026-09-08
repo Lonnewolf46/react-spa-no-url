@@ -1,10 +1,16 @@
 import { useState } from 'react'
 import { terms } from '../data/terms'
 import TermRow from '../components/TermRow'
+import { useData } from '../context/DataContext'
+
 
 function Glossary() {
   const [search, setSearch] = useState('')
   const filteredTerms = terms.filter((term) => `${term.term} ${term.definition} ${term.category}`.toLowerCase().includes(search.toLowerCase()))
+
+  const { decryptedData } = useData()
+
+  console.log('DATA FROM CONTEXT:', decryptedData)
 
   return (
     <section className="page-width glossary-page">
