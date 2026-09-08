@@ -10,6 +10,7 @@ const DataContext = createContext<DataContextType | undefined>(undefined)
 export function DataProvider({ children }: { children: ReactNode }) {
     const [decryptedData, setDecryptedData] = useState<unknown>(null)
 
+
     useEffect(() => {
         console.log('DataProvider effect running')
         const handleMessage = (event: MessageEvent) => {
@@ -68,6 +69,10 @@ export function DataProvider({ children }: { children: ReactNode }) {
         }
         window.addEventListener('message', handleMessage)
 
+        window.parent.postMessage(
+            { action: 'ready' },
+            'https://portalcc.medismart.net'
+        )
         return () => {
             window.removeEventListener('message', handleMessage)
         }
