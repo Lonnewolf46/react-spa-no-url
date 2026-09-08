@@ -11,11 +11,12 @@ export function DataProvider({ children }: { children: ReactNode }) {
     const [decryptedData, setDecryptedData] = useState<unknown>(null)
 
     useEffect(() => {
+        console.log('DataProvider effect running')
         const handleMessage = (event: MessageEvent) => {
             console.log('EVENT ORIGIN DETECTED ON', event.origin)
 
             if (
-                event.origin !== 'null' ||
+                event.origin !== 'https://portalcc.medismart.net' ||
                 !event.data ||
                 typeof event.data !== 'object'
             ) {

@@ -18,6 +18,7 @@ function Glossary() {
         <div>
           <p className="eyebrow">Indice completo</p>
           <h1>Explora los terminos.</h1>
+          <p>{JSON.stringify(decryptedData, null, 2)}</p>
         </div>
         <span className="result-count">{filteredTerms.length.toString().padStart(2, '0')} resultados</span>
       </div>

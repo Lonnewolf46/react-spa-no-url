@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import About from './pages/About'
 import Glossary from './pages/Glossary'
 import Home from './pages/Home'
-import { decryptData } from './data/info_fetching'
 import type { Page } from './types'
 
 function App() {
